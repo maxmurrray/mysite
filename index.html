@@ -164,6 +164,14 @@
       grid-template-rows: repeat(24, var(--pixel-size));
       position: relative;
       flex-shrink: 0;
+      /* Nudge right to visually center the punk (its pixels are left-biased in the 24x24 grid) */
+      transform: translateX(calc(var(--pixel-size) * 0.5));
+    }
+
+    @media (max-width: 768px) {
+      .punk-grid {
+        filter: brightness(0.82);
+      }
     }
 
     /* ---------- FOOTER — overlaid at bottom ---------- */

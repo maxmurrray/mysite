@@ -22,7 +22,7 @@
       :root { --pixel-size: 16px; }
     }
     @media (max-width: 480px) {
-      :root { --pixel-size: 12px; }
+      :root { --pixel-size: 14px; }
     }
     /* Landscape phones — very short viewports */
     @media (max-height: 500px) {
@@ -67,7 +67,7 @@
       inset: 0;
       z-index: 9000;
       pointer-events: none;
-      opacity: 0.03;
+      opacity: 0.018;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 200px 200px;
     }
@@ -78,7 +78,7 @@
       inset: 0;
       z-index: 8999;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%);
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.55) 100%);
     }
 
     /* =============================================

@@ -870,7 +870,7 @@
       const mobile = isTouch || window.innerWidth < 768;
       const initialCount = mobile ? 2 : 4;
       const interval = mobile ? 15000 : 8000;
-      const shootInterval = mobile ? 25000 : 12000;
+      const shootInterval = mobile ? 12000 : 6000;
       for (let i = 0; i < initialCount; i++) {
         setTimeout(spawnInvader, i * 3000);
       }
@@ -879,7 +879,7 @@
       setTimeout(() => {
         shootInvader();
         setInterval(shootInvader, shootInterval);
-      }, 10000);
+      }, 5000);
     }
 
     /* Boot */

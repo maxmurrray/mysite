@@ -19,10 +19,10 @@
     }
 
     @media (max-width: 768px) {
-      :root { --pixel-size: 16px; }
+      :root { --pixel-size: 18px; }
     }
     @media (max-width: 480px) {
-      :root { --pixel-size: 14px; }
+      :root { --pixel-size: 22px; }
     }
     /* Landscape phones — very short viewports */
     @media (max-height: 500px) {
@@ -152,6 +152,10 @@
 
     .punk-perspective {
       position: relative;
+      max-width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
     }
 
     .punk-grid {
@@ -159,6 +163,7 @@
       grid-template-columns: repeat(24, var(--pixel-size));
       grid-template-rows: repeat(24, var(--pixel-size));
       position: relative;
+      flex-shrink: 0;
     }
 
     /* ---------- FOOTER — overlaid at bottom ---------- */

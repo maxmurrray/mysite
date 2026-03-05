@@ -259,18 +259,67 @@
 
     /* ── Mobile ── */
     @media (max-width: 900px) {
-      header { padding: 18px 20px; }
+      /* Header */
+      header { padding: 16px 20px; }
       .header-label { display: none; }
-      .intro { padding: 48px 20px 36px; }
-      .intro-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+
+      /* Intro */
+      .intro { padding: 40px 20px 32px; }
+      .intro-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .intro h1 { font-size: clamp(36px, 10vw, 52px); }
       .intro-meta { text-align: left; }
+      .intro-meta p { max-width: 100%; font-size: 13px; }
+
+      /* Grid — single column, keep border system intact */
       .grid { grid-template-columns: 1fr; }
       .span-2, .span-3, .row-2 { grid-column: auto; grid-row: auto; }
-      .card { padding: 24px; }
-      .card-inner-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      /* Cards */
+      .card { padding: 22px 20px; }
+      .year { top: 18px; right: 18px; font-size: 10px; }
+
+      /* Punksierge inner grid stacks */
+      .card-inner-grid { grid-template-columns: 1fr; gap: 20px; }
+
+      /* Code windows: let them scroll horizontally, don't break page */
+      .code-window { max-width: 100%; overflow: hidden; }
+      .code-body { padding: 14px 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .code-body code { font-size: 10.5px; line-height: 1.65; }
+
+      /* Stats */
       .stat-grid { grid-template-columns: 1fr 1fr; }
-      .year { top: 20px; right: 20px; }
-      footer { padding: 24px 20px; flex-direction: column; gap: 14px; }
+      .stat-cell { padding: 14px 16px; }
+      .stat-val { font-size: 22px; }
+
+      /* Tags */
+      .tags { gap: 4px; }
+      .tag { font-size: 9px; padding: 3px 7px; }
+
+      /* Links — bigger tap area */
+      .card-links { gap: 16px; flex-wrap: wrap; }
+      .card-links a { font-size: 13px; padding: 4px 0; }
+
+      /* Demo button */
+      .pixel-btn { font-size: 11px; padding: 11px 24px; }
+
+      /* Nōri preview */
+      .nori-preview { padding: 20px; }
+      .nori-headline { font-size: 18px; }
+
+      /* Hide the empty filler cell at the bottom */
+      .card-empty { display: none; }
+
+      /* Footer */
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+      .footer-links { gap: 16px; }
+    }
+
+    /* Very small screens */
+    @media (max-width: 380px) {
+      .intro h1 { font-size: 32px; }
+      .card { padding: 18px 16px; }
+      .code-body code { font-size: 9.5px; }
+      .stat-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -528,8 +577,8 @@
       </div>
     </div>
 
-    <!-- Empty cell to complete the 3-col row -->
-    <div class="card" style="background:transparent;"></div>
+    <!-- Empty cell to complete the 3-col row (hidden on mobile) -->
+    <div class="card card-empty" style="background:transparent;"></div>
 
   </div><!-- /grid -->
 

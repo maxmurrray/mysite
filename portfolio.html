@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Work — Max Murray</title>
+  <meta name="description" content="Selected projects by Max Murray — web developer and agentic engineer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-2: #161616;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --accent: #D7489A;
+      --gold: #c9a84c;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.45);
+      --muted-2: rgba(255,255,255,0.25);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { background: var(--bg); scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Noise ── */
+    .noise {
+      position: fixed; inset: 0; z-index: 9000;
+      pointer-events: none; opacity: 0.018;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      position: sticky; top: 0;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--text); }
+    .back-link svg { transition: transform 0.2s ease; }
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    .header-right {
+      font-size: 13px;
+      color: var(--muted-2);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      padding: 80px 48px 56px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .intro-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .intro h1 {
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .intro h1 em {
+      font-style: normal;
+      color: var(--muted);
+    }
+
+    .intro-sub {
+      margin-top: 20px;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    /* ── Grid ── */
+    .grid {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 48px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .card:hover { border-color: var(--border-hover); }
+
+    .card.full  { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .card.tall  { grid-row: span 2; }
+
+    .card.pink  { border-color: rgba(215, 72, 154, 0.2); }
+    .card.pink:hover  { border-color: rgba(215, 72, 154, 0.45); }
+    .card.gold  { border-color: rgba(201, 168, 76, 0.2); }
+    .card.gold:hover  { border-color: rgba(201, 168, 76, 0.45); }
+
+    /* Glow spot */
+    .card.pink::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(215,72,154,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .card.gold::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .card-title {
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .card-title.pink { color: var(--accent); }
+    .card-title.gold { color: var(--gold); }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+
+    /* Links */
+    .card-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .card-links a {
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 1px;
+      transition: color 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .card-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: currentColor;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-links a:hover { color: var(--text); }
+    .card-links a:hover::after { width: 100%; }
+    .card-links a.hi-pink { color: var(--accent); }
+    .card-links a.hi-gold { color: var(--gold); }
+
+    /* ── Code window ── */
+    .code-window {
+      background: #0c0c0c;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .code-chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 16px;
+      background: rgba(255,255,255,0.025);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #ff5f57; }
+    .dot.y { background: #febc2e; }
+    .dot.g { background: #28c840; }
+
+    .code-filename {
+      margin-left: 8px;
+      font-size: 11px;
+      color: var(--muted-2);
+      font-family: 'Menlo', 'Monaco', monospace;
+    }
+
+    .code-body {
+      padding: 20px 22px;
+      overflow-x: auto;
+    }
+
+    .code-body code {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      white-space: pre;
+      display: block;
+    }
+
+    /* Syntax */
+    .kw   { color: #c792ea; }
+    .fn   { color: #82aaff; }
+    .str  { color: #c3e88d; }
+    .cm   { color: #3d5a6a; }
+    .num  { color: #f78c6c; }
+    .vr   { color: #eeffff; }
+    .pr   { color: #89ddff; }
+    .op   { color: #89ddff; }
+
+    /* ── Demo button (live pixel-fill) ── */
+    .demo-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .demo-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .pixel-btn {
+      display: inline-block;
+      position: relative;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+      width: fit-content;
+      transition: color 0.1s;
+    }
+
+    .pixel-btn .btn-text {
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .pixel-btn canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Year badge ── */
+    .year-badge {
+      position: absolute;
+      top: 28px; right: 28px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--muted-2);
+    }
+
+    /* ── Divider ── */
+    .card-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 4px 0;
+    }
+
+    /* ── Small card stat ── */
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-val {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted-2);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      header { padding: 18px 20px; }
+      .header-right { display: none; }
+      .intro { padding: 48px 20px 36px; }
+      .grid { padding: 0 20px 60px; grid-template-columns: 1fr; gap: 12px; }
+      .card { padding: 24px; }
+      .card.full { grid-template-columns: 1fr; gap: 28px; }
+      .card.tall { grid-row: span 1; }
+      .year-badge { top: 20px; right: 20px; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Max Murray
+    </a>
+    <span class="header-right">Selected Work</span>
+  </header>
+
+  <div class="intro">
+    <p class="intro-eyebrow">Portfolio</p>
+    <h1>Things I've built<br><em>and shipped.</em></h1>
+    <p class="intro-sub">Frontend-heavy, always interactive. A mix of products, tools, and experiments.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ═══ 01 PUNKSIERGE — full-width featured ═══ -->
+    <div class="card full pink">
+
+      <!-- Left: info + live demo -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div>
+          <div class="card-num">01 — Web / CryptoPunks</div>
+          <div class="card-title pink" style="margin-top:8px;">Punksierge</div>
+        </div>
+
+        <p class="card-desc">
+          CryptoPunk concierge site for two real holders. Free advice, no agenda.
+          Built with pure HTML/CSS/JS — no framework. Features a Canvas-based
+          pixel-fill button animation, a randomized punk marquee, services accordion,
+          and a three-post blog. Auto-deploys to Vercel on every push.
+        </p>
+
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Canvas API</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="demo-wrap">
+          <div class="demo-label">Live demo — hover the button below</div>
+          <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">
+            Get In Touch
+          </a>
+        </div>
+
+        <div class="card-links" style="margin-top:8px;">
+          <a href="https://punksierge.vercel.app" target="_blank" rel="noopener" class="hi-pink">Live Site ↗</a>
+          <a href="https://github.com/maxmurrray/Punksierge" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <!-- Right: code window -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="code-window">
+          <div class="code-chrome">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span class="code-filename">pixel-fill.js</span>
+          </div>
+          <div class="code-body">
+            <code><span class="cm">// Randomize fill order once on first hover</span>
+<span class="kw">function</span> <span class="fn">init</span>() {
+  <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">y</span> = <span class="num">0</span>; <span class="vr">y</span> < <span class="vr">canvas</span>.<span class="pr">height</span>; <span class="vr">y</span> += <span class="vr">PIXEL</span>)
+    <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">x</span> = <span class="num">0</span>; <span class="vr">x</span> < <span class="vr">canvas</span>.<span class="pr">width</span>; <span class="vr">x</span> += <span class="vr">PIXEL</span>)
+      <span class="vr">pixels</span>.<span class="fn">push</span>([<span class="vr">x</span>, <span class="vr">y</span>]);
+  <span class="fn">shuffle</span>(<span class="vr">pixels</span>); <span class="cm">// Fisher-Yates</span>
+}
+
+<span class="cm">// Fill ~1/22 of remaining pixels per frame</span>
+<span class="kw">function</span> <span class="fn">animate</span>() {
+  <span class="kw">const</span> <span class="vr">step</span> = <span class="fn">Math</span>.<span class="fn">ceil</span>(<span class="vr">pixels</span>.<span class="pr">length</span> / <span class="num">22</span>);
+  <span class="vr">filled</span> = <span class="fn">Math</span>.<span class="fn">min</span>(<span class="vr">pixels</span>.<span class="pr">length</span>,
+    <span class="vr">filled</span> + <span class="vr">direction</span> * <span class="vr">step</span>);
+
+  <span class="vr">ctx</span>.<span class="fn">clearRect</span>(<span class="num">0</span>, <span class="num">0</span>, <span class="vr">canvas</span>.<span class="pr">width</span>, <span class="vr">canvas</span>.<span class="pr">height</span>);
+  <span class="vr">ctx</span>.<span class="pr">fillStyle</span> = <span class="str">'rgba(255,255,255,0.35)'</span>;
+  <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">i</span> = <span class="num">0</span>; <span class="vr">i</span> < <span class="vr">filled</span>; <span class="vr">i</span>++)
+    <span class="vr">ctx</span>.<span class="fn">fillRect</span>(...<span class="vr">pixels</span>[<span class="vr">i</span>], <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>, <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>);
+
+  <span class="kw">if</span> ((<span class="vr">direction</span> > <span class="num">0</span> <span class="op">&&</span> <span class="vr">filled</span> < <span class="vr">pixels</span>.<span class="pr">length</span>) <span class="op">||</span>
+      (<span class="vr">direction</span> < <span class="num">0</span> <span class="op">&&</span> <span class="vr">filled</span> > <span class="num">0</span>))
+    <span class="fn">requestAnimationFrame</span>(<span class="fn">animate</span>);
+}</code>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;">
+            <div class="stat-val" style="color:var(--accent);">10k</div>
+            <div class="stat-label">CryptoPunks in live marquee</div>
+          </div>
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;">
+            <div class="stat-val">0</div>
+            <div class="stat-label">frameworks. Pure JS.</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="year-badge">2026</span>
+    </div>
+
+
+    <!-- ═══ 02 PROUDLY AVERAGE ═══ -->
+    <div class="card gold tall">
+      <div class="card-num">02 — Web / Streetwear</div>
+      <div class="card-title gold" style="margin-top:8px;">Proudly Average</div>
+
+      <p class="card-desc">
+        Landing page and backend infrastructure for a streetwear brand launching May 2026.
+        Phone number capture flows directly into a Notion database via a serverless
+        API endpoint — no third-party form tool needed.
+      </p>
+
+      <div class="card-divider"></div>
+
+      <div class="code-window">
+        <div class="code-chrome">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+          <span class="code-filename">api/subscribe.js</span>
+        </div>
+        <div class="code-body">
+          <code><span class="cm">// Serverless: phone → Notion DB</span>
+<span class="kw">export default</span> <span class="kw">async function</span> <span class="fn">handler</span>(<span class="vr">req</span>, <span class="vr">res</span>) {
+  <span class="kw">const</span> { <span class="vr">phone</span> } = <span class="vr">req</span>.<span class="pr">body</span>;
+
+  <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.notion.com/v1/pages'</span>, {
+    <span class="pr">method</span>: <span class="str">'POST'</span>,
+    <span class="pr">headers</span>: {
+      <span class="str">'Authorization'</span>: <span class="str">`Bearer <span class="op">${</span><span class="vr">NOTION_TOKEN</span><span class="op">}</span>`</span>,
+      <span class="str">'Notion-Version'</span>: <span class="str">'2022-06-28'</span>,
+    },
+    <span class="pr">body</span>: <span class="fn">JSON.stringify</span>({
+      <span class="pr">parent</span>: { <span class="pr">database_id</span>: <span class="vr">NOTION_DB_ID</span> },
+      <span class="pr">properties</span>: {
+        <span class="str">'Phone'</span>: { <span class="pr">phone_number</span>: <span class="vr">phone</span> }
+      }
+    })
+  });
+
+  <span class="vr">res</span>.<span class="fn">json</span>({ <span class="pr">ok</span>: <span class="kw">true</span> });
+}</code>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Next.js</span>
+        <span class="tag">Notion API</span>
+        <span class="tag">Vercel</span>
+        <span class="tag">Serverless</span>
+      </div>
+
+      <div class="card-links">
+        <a href="https://proudly-average.vercel.app" target="_blank" rel="noopener" class="hi-gold">Live Site ↗</a>
+        <a href="https://github.com/maxmurrray/proudly-average" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+
+      <span class="year-badge">2026</span>
+    </div>
+
+
+    <!-- ═══ 03 LOCKED IN ═══ -->
+    <div class="card">
+      <div class="card-num">03 — Mobile App</div>
+      <div class="card-title" style="margin-top:8px;">Locked In</div>
+
+      <p class="card-desc">
+        Compete with friends to stay off your phone. Social accountability
+        meets screen time tracking — iOS &amp; Android.
+      </p>
+
+      <div class="tags">
+        <span class="tag">React Native</span>
+        <span class="tag">iOS</span>
+        <span class="tag">Android</span>
+      </div>
+
+      <div class="card-links">
+        <a href="https://github.com/maxmurrray/locked-in-app" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+
+      <span class="year-badge">2024</span>
+    </div>
+
+
+    <!-- ═══ 04 TABBY ═══ -->
+    <div class="card" style="grid-column: 1 / -1;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;">
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:500px;">
+          <div>
+            <div class="card-num">04 — Chrome Extension</div>
+            <div class="card-title" style="margin-top:8px;">Tabby</div>
+          </div>
+          <p class="card-desc">AI-powered Chrome extension that automatically organizes your open tabs into logical groups. Cuts through tab chaos so you can actually find what you're looking for.</p>
+          <div class="tags">
+            <span class="tag">Chrome Extension</span>
+            <span class="tag">AI</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Manifest V3</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/maxmurrray/tabby" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-self:center;">
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px 32px;text-align:center;">
+            <div class="stat-val">MV3</div>
+            <div class="stat-label">Manifest version</div>
+          </div>
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px 32px;text-align:center;">
+            <div class="stat-val" style="color:var(--accent);">AI</div>
+            <div class="stat-label">Tab grouping</div>
+          </div>
+        </div>
+      </div>
+      <span class="year-badge">2024</span>
+    </div>
+
+  </div><!-- /grid -->
+
+  <footer>
+    <span class="footer-copy">© Max Murray</span>
+    <div class="footer-links">
+      <a href="https://github.com/maxmurrray" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/m4x_0x" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="mailto:maxbmurray@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Pixel-fill button demo ── */
+    (function () {
+      const btn = document.getElementById('pixel-demo-btn');
+      if (!btn) return;
+
+      const PIXEL = 10;
+      let pixels = [], filled = 0, direction = 0, raf = null;
+
+      // Wrap text
+      const label = btn.textContent.trim();
+      btn.textContent = '';
+      const span = document.createElement('span');
+      span.className = 'btn-text';
+      span.textContent = label;
+      btn.appendChild(span);
+
+      // Canvas
+      const canvas = document.createElement('canvas');
+      btn.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+
+      function init() {
+        canvas.width  = btn.offsetWidth;
+        canvas.height = btn.offsetHeight;
+        pixels = [];
+        for (let y = 0; y < canvas.height; y += PIXEL)
+          for (let x = 0; x < canvas.width; x += PIXEL)
+            pixels.push([x, y]);
+        // Fisher-Yates shuffle
+        for (let i = pixels.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pixels[i], pixels[j]] = [pixels[j], pixels[i]];
+        }
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        for (let i = 0; i < filled; i++)
+          ctx.fillRect(pixels[i][0], pixels[i][1], PIXEL - 1, PIXEL - 1);
+      }
+
+      function animate() {
+        const step = Math.max(1, Math.ceil(pixels.length / 22));
+        filled = Math.min(pixels.length, Math.max(0, filled + direction * step));
+        render();
+        if ((direction > 0 && filled < pixels.length) ||
+            (direction < 0 && filled > 0))
+          raf = requestAnimationFrame(animate);
+      }
+
+      btn.addEventListener('mouseenter', (e) => {
+        e.preventDefault();
+        cancelAnimationFrame(raf);
+        if (filled === 0) init();
+        direction = 1;
+        raf = requestAnimationFrame(animate);
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(raf);
+        direction = -1;
+        raf = requestAnimationFrame(animate);
+      });
+
+      // Prevent navigation on hover — only navigate on actual click
+      btn.addEventListener('click', (e) => {
+        // let it navigate normally
+      });
+    })();
+  </script>
+
+</body>
+</html>

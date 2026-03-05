@@ -347,7 +347,7 @@
     <div class="intro-row">
       <h1>Things I've<br>built <em>and</em><br>shipped.</h1>
       <div class="intro-meta">
-        <div class="intro-count">07 Projects</div>
+        <div class="intro-count">06 Projects</div>
         <p>Frontend-heavy, always interactive. A mix of products, tools, and experiments.</p>
       </div>
     </div>
@@ -358,7 +358,7 @@
     <!-- ═══════════════════════════════════════
          01  PUNKSIERGE — spans 2 cols
     ═══════════════════════════════════════════ -->
-    <div class="card span-2 bar-pink">
+    <div class="card span-3 bar-pink">
       <span class="year">2026</span>
       <div class="card-inner-grid">
 
@@ -438,62 +438,12 @@
     </div><!-- /Punksierge -->
 
 
-    <!-- ═══════════════════════════════════════
-         02  PROUDLY AVERAGE — col 3, rows 1–2
-    ═══════════════════════════════════════════ -->
-    <div class="card row-2 bar-gold">
-      <span class="year">2026</span>
-      <div class="card-num">02 — Web / Streetwear</div>
-      <div class="card-title gold">Proudly Average</div>
-
-      <p class="card-desc">Landing page and ops infrastructure for a streetwear brand dropping May 2026. Phone capture flows directly into Notion via a serverless endpoint — no third-party form tool.</p>
-
-      <div class="code-window">
-        <div class="code-chrome">
-          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-          <span class="code-filename">api/subscribe.js</span>
-        </div>
-        <div class="code-body">
-          <code><span class="cm">// phone → Notion DB</span>
-<span class="kw">const</span> <span class="vr">res</span> = <span class="kw">await</span> <span class="fn">fetch</span>(
-  <span class="str">'https://api.notion.com/v1/pages'</span>, {
-  <span class="pr">method</span>: <span class="str">'POST'</span>,
-  <span class="pr">headers</span>: {
-    <span class="str">'Authorization'</span>: <span class="str">`Bearer <span class="op">${</span><span class="vr">TOKEN</span><span class="op">}</span>`</span>,
-    <span class="str">'Notion-Version'</span>: <span class="str">'2022-06-28'</span>,
-  },
-  <span class="pr">body</span>: <span class="fn">JSON.stringify</span>({
-    <span class="pr">parent</span>: { <span class="pr">database_id</span>: <span class="vr">DB_ID</span> },
-    <span class="pr">properties</span>: {
-      <span class="str">'Phone'</span>: { <span class="pr">phone_number</span>: <span class="vr">phone</span> }
-    }
-  })
-});</code>
-        </div>
-      </div>
-
-      <div class="tags">
-        <span class="tag">Next.js</span><span class="tag">Notion API</span>
-        <span class="tag">Vercel</span><span class="tag">Serverless</span>
-      </div>
-
-      <div class="card-links" style="margin-top:auto;">
-        <a href="https://proudly-average.vercel.app" target="_blank" rel="noopener" class="hi-gold">Live Site ↗</a>
-        <a href="https://github.com/maxmurrray/proudly-average" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </div><!-- /PA -->
-
-
-    <!-- ═══════════════════════════════════════
-         03  OFFICE BLOG
-    ═══════════════════════════════════════════ -->
+    <!-- ═══ 02 OFFICE BLOG ═══ -->
     <div class="card bar-orange">
       <span class="year">2025</span>
-      <div class="card-num">03 — Content / Affiliate</div>
+      <div class="card-num">02 — Content / Affiliate</div>
       <div class="card-title" style="color:var(--orange);">Office Blog</div>
-
       <p class="card-desc">Product review site for office productivity gear. 15+ hand-coded post pages, custom landing, no CMS. Built for SEO from scratch.</p>
-
       <div class="stat-grid">
         <div class="stat-cell">
           <div class="stat-val" style="color:var(--orange);">15<span style="font-size:14px;color:var(--muted);">+</span></div>
@@ -504,29 +454,38 @@
           <div class="stat-label">CMS used</div>
         </div>
       </div>
-
       <div class="tags">
         <span class="tag">HTML</span><span class="tag">CSS</span>
         <span class="tag">JavaScript</span><span class="tag">SEO</span>
       </div>
-
       <div class="card-links" style="margin-top:auto;">
         <a href="https://office-blog.vercel.app" target="_blank" rel="noopener" class="hi-orange">Live Site ↗</a>
         <a href="https://github.com/maxmurrray/office-blog" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-    </div><!-- /Office Blog -->
+    </div>
 
+    <!-- ═══ 03 READY PAPER ONE ═══ -->
+    <div class="card bar-blue">
+      <span class="year">2025</span>
+      <div class="card-num">03 — Tool / Productivity</div>
+      <div class="card-title" style="color:var(--blue);">Ready Paper One</div>
+      <p class="card-desc">Free resume builder with live preview, three templates (Modern, Classic, Compact), and ATS-friendly PDF export. No sign-up required.</p>
+      <div class="tags">
+        <span class="tag">Next.js</span><span class="tag">React</span>
+        <span class="tag">PDF Export</span><span class="tag">Vercel</span>
+      </div>
+      <div class="card-links" style="margin-top:auto;">
+        <a href="https://readypaperone.xyz" target="_blank" rel="noopener" class="hi-blue">Live Site ↗</a>
+        <a href="https://github.com/maxmurrray/resume-builder" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
 
-    <!-- ═══════════════════════════════════════
-         04  NŌRI SUSHI
-    ═══════════════════════════════════════════ -->
+    <!-- ═══ 04 NŌRI SUSHI ═══ -->
     <div class="card bar-white">
       <span class="year">2025</span>
       <div class="card-num">04 — Restaurant / Hospitality</div>
       <div class="card-title">N&#x14d;ri Sushi</div>
-
       <p class="card-desc">Restaurant site for a high-end sushi concept. Full-bleed landing, interactive menu, chef profile. Minimal — lets the food speak.</p>
-
       <div class="nori-preview">
         <div class="nori-headline">Elevated Sushi,<br>Refined Experience.</div>
         <div class="divider"></div>
@@ -541,22 +500,17 @@
           </div>
         </div>
       </div>
-
       <div class="tags">
         <span class="tag">HTML</span><span class="tag">CSS</span>
         <span class="tag">JavaScript</span><span class="tag">UI Design</span>
       </div>
-
       <div class="card-links" style="margin-top:auto;">
         <a href="https://nori-sushi.vercel.app" target="_blank" rel="noopener">Live Site ↗</a>
         <a href="https://github.com/maxmurrray/nori-sushi" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-    </div><!-- /Nori -->
+    </div>
 
-
-    <!-- ═══════════════════════════════════════
-         05  LOCKED IN + 06 TABBY — bottom row
-    ═══════════════════════════════════════════ -->
+    <!-- ═══ 05 LOCKED IN ═══ -->
     <div class="card bar-white">
       <span class="year">2024</span>
       <div class="card-num">05 — Mobile App</div>
@@ -570,6 +524,7 @@
       </div>
     </div>
 
+    <!-- ═══ 06 TABBY ═══ -->
     <div class="card bar-white">
       <span class="year">2024</span>
       <div class="card-num">06 — Chrome Extension</div>
@@ -584,23 +539,8 @@
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         07  READY PAPER ONE
-    ═══════════════════════════════════════════ -->
-    <div class="card bar-blue">
-      <span class="year">2025</span>
-      <div class="card-num">07 — Tool / Productivity</div>
-      <div class="card-title" style="color:var(--blue);">Ready Paper One</div>
-      <p class="card-desc">Free resume builder with live preview, three templates (Modern, Classic, Compact), and ATS-friendly PDF export. No sign-up required.</p>
-      <div class="tags">
-        <span class="tag">Next.js</span><span class="tag">React</span>
-        <span class="tag">PDF Export</span><span class="tag">Vercel</span>
-      </div>
-      <div class="card-links" style="margin-top:auto;">
-        <a href="https://readypaperone.xyz" target="_blank" rel="noopener" class="hi-blue">Live Site ↗</a>
-        <a href="https://github.com/maxmurrray/resume-builder" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </div>
+    <!-- Empty cell — hidden on mobile -->
+    <div class="card card-empty" style="background:transparent;"></div>
 
   </div><!-- /grid -->
 

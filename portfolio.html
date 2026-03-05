@@ -16,6 +16,7 @@
       --accent: #D7489A;
       --gold: #c9a84c;
       --orange: #C47A3A;
+      --blue: #0a84ff;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.42);
       --dim: rgba(255,255,255,0.18);
@@ -135,6 +136,7 @@
     .card.bar-pink::before   { background: var(--accent); }
     .card.bar-gold::before   { background: var(--gold); }
     .card.bar-orange::before { background: var(--orange); }
+    .card.bar-blue::before   { background: var(--blue); }
     .card.bar-white::before  { background: rgba(255,255,255,0.35); }
 
     /* ── Card internals ── */
@@ -181,6 +183,7 @@
     .card-links a.hi-pink   { color: var(--accent); }
     .card-links a.hi-gold   { color: var(--gold); }
     .card-links a.hi-orange { color: var(--orange); }
+    .card-links a.hi-blue   { color: var(--blue); }
 
     /* ── Code window ── */
     .code-window {
@@ -344,7 +347,7 @@
     <div class="intro-row">
       <h1>Things I've<br>built <em>and</em><br>shipped.</h1>
       <div class="intro-meta">
-        <div class="intro-count">06 Projects</div>
+        <div class="intro-count">07 Projects</div>
         <p>Frontend-heavy, always interactive. A mix of products, tools, and experiments.</p>
       </div>
     </div>
@@ -508,7 +511,7 @@
       </div>
 
       <div class="card-links" style="margin-top:auto;">
-        <a href="https://readypaperone.xyz" target="_blank" rel="noopener" class="hi-orange">Live Site ↗</a>
+        <a href="https://office-blog.vercel.app" target="_blank" rel="noopener" class="hi-orange">Live Site ↗</a>
         <a href="https://github.com/maxmurrray/office-blog" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div><!-- /Office Blog -->
@@ -581,8 +584,23 @@
       </div>
     </div>
 
-    <!-- Empty cell to complete the 3-col row (hidden on mobile) -->
-    <div class="card card-empty" style="background:transparent;"></div>
+    <!-- ═══════════════════════════════════════
+         07  READY PAPER ONE
+    ═══════════════════════════════════════════ -->
+    <div class="card bar-blue">
+      <span class="year">2025</span>
+      <div class="card-num">07 — Tool / Productivity</div>
+      <div class="card-title" style="color:var(--blue);">Ready Paper One</div>
+      <p class="card-desc">Free resume builder with live preview, three templates (Modern, Classic, Compact), and ATS-friendly PDF export. No sign-up required.</p>
+      <div class="tags">
+        <span class="tag">Next.js</span><span class="tag">React</span>
+        <span class="tag">PDF Export</span><span class="tag">Vercel</span>
+      </div>
+      <div class="card-links" style="margin-top:auto;">
+        <a href="https://readypaperone.xyz" target="_blank" rel="noopener" class="hi-blue">Live Site ↗</a>
+        <a href="https://github.com/maxmurrray/resume-builder" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
 
   </div><!-- /grid -->
 

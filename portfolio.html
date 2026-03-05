@@ -15,6 +15,7 @@
       --stroke-hi: rgba(255,255,255,0.28);
       --accent: #D7489A;
       --gold: #c9a84c;
+      --orange: #C47A3A;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.42);
       --dim: rgba(255,255,255,0.18);
@@ -131,9 +132,10 @@
       background: transparent;
       transition: background 0.2s;
     }
-    .card.bar-pink::before  { background: var(--accent); }
-    .card.bar-gold::before  { background: var(--gold); }
-    .card.bar-white::before { background: rgba(255,255,255,0.35); }
+    .card.bar-pink::before   { background: var(--accent); }
+    .card.bar-gold::before   { background: var(--gold); }
+    .card.bar-orange::before { background: var(--orange); }
+    .card.bar-white::before  { background: rgba(255,255,255,0.35); }
 
     /* ── Card internals ── */
     .card-num {
@@ -176,8 +178,9 @@
     }
     .card-links a:hover { color: var(--text); }
     .card-links a:hover::after { width: 100%; }
-    .card-links a.hi-pink { color: var(--accent); }
-    .card-links a.hi-gold { color: var(--gold); }
+    .card-links a.hi-pink   { color: var(--accent); }
+    .card-links a.hi-gold   { color: var(--gold); }
+    .card-links a.hi-orange { color: var(--orange); }
 
     /* ── Code window ── */
     .code-window {
@@ -481,16 +484,16 @@
     <!-- ═══════════════════════════════════════
          03  OFFICE BLOG
     ═══════════════════════════════════════════ -->
-    <div class="card bar-white">
+    <div class="card bar-orange">
       <span class="year">2025</span>
       <div class="card-num">03 — Content / Affiliate</div>
-      <div class="card-title">Office Blog</div>
+      <div class="card-title" style="color:var(--orange);">Office Blog</div>
 
       <p class="card-desc">Product review site for office productivity gear. 15+ hand-coded post pages, custom landing, no CMS. Built for SEO from scratch.</p>
 
       <div class="stat-grid">
         <div class="stat-cell">
-          <div class="stat-val">15<span style="font-size:14px;color:var(--muted);">+</span></div>
+          <div class="stat-val" style="color:var(--orange);">15<span style="font-size:14px;color:var(--muted);">+</span></div>
           <div class="stat-label">Published posts</div>
         </div>
         <div class="stat-cell">
@@ -505,7 +508,7 @@
       </div>
 
       <div class="card-links" style="margin-top:auto;">
-        <a href="https://readypaperone.xyz" target="_blank" rel="noopener">Live Site ↗</a>
+        <a href="https://readypaperone.xyz" target="_blank" rel="noopener" class="hi-orange">Live Site ↗</a>
         <a href="https://github.com/maxmurrray/office-blog" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div><!-- /Office Blog -->

@@ -17,6 +17,7 @@
       --gold: #c9a84c;
       --orange: #C47A3A;
       --blue: #0a84ff;
+      --donco: #2962ff;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.42);
       --dim: rgba(255,255,255,0.18);
@@ -137,6 +138,7 @@
     .card.bar-gold::before   { background: var(--gold); }
     .card.bar-orange::before { background: var(--orange); }
     .card.bar-blue::before   { background: var(--blue); }
+    .card.bar-donco::before  { background: var(--donco); }
     .card.bar-white::before  { background: rgba(255,255,255,0.35); }
 
     /* ── Card internals ── */
@@ -184,6 +186,7 @@
     .card-links a.hi-gold   { color: var(--gold); }
     .card-links a.hi-orange { color: var(--orange); }
     .card-links a.hi-blue   { color: var(--blue); }
+    .card-links a.hi-donco  { color: var(--donco); }
 
     /* ── Code window ── */
     .code-window {
@@ -347,7 +350,7 @@
     <div class="intro-row">
       <h1>Things I've<br>built <em>and</em><br>shipped.</h1>
       <div class="intro-meta">
-        <div class="intro-count">06 Projects</div>
+        <div class="intro-count">07 Projects</div>
         <p>Frontend-heavy, always interactive. A mix of products, tools, and experiments.</p>
       </div>
     </div>
@@ -365,6 +368,9 @@
         <!-- Left -->
         <div style="display:flex;flex-direction:column;gap:18px;">
           <div>
+            <svg viewBox="0 0 2 3" width="13" height="20" fill="#DE4097" style="margin-bottom:10px;display:block;">
+              <rect x="0" y="0" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/>
+            </svg>
             <div class="card-num">01 — Web / CryptoPunks</div>
             <div class="card-title pink" style="margin-top:8px;">Punksierge</div>
           </div>
@@ -441,6 +447,7 @@
     <!-- ═══ 02 OFFICE BLOG ═══ -->
     <div class="card bar-orange">
       <span class="year">2025</span>
+      <img src="https://raw.githubusercontent.com/maxmurrray/office-blog/main/SVG/Office%20blog%20logo.svg" alt="Office Blog" width="28" height="37" style="display:block;margin-bottom:10px;opacity:0.9;">
       <div class="card-num">02 — Content / Affiliate</div>
       <div class="card-title" style="color:var(--orange);">Office Blog</div>
       <p class="card-desc">Product review site for office productivity gear. 15+ hand-coded post pages, custom landing, no CMS. Built for SEO from scratch.</p>
@@ -480,10 +487,25 @@
       </div>
     </div>
 
-    <!-- ═══ 04 NŌRI SUSHI ═══ -->
+    <!-- ═══ 04 DONCO SOLUTIONS ═══ -->
+    <div class="card bar-donco">
+      <span class="year">2024</span>
+      <div class="card-num">04 — Client / Web</div>
+      <div class="card-title" style="color:var(--donco);">Donco Solutions</div>
+      <p class="card-desc">Full website build for Donco Recycling Solutions — a national industrial recycler serving Fortune 500s, processing 200,000+ tons annually. Built entirely around provided brand assets, stakeholder direction, and existing identity. A different challenge than building from scratch: executing cleanly within someone else's vision.</p>
+      <div class="tags">
+        <span class="tag">Webflow</span><span class="tag">Client Work</span>
+        <span class="tag">Brand Constraints</span><span class="tag">UI Design</span>
+      </div>
+      <div class="card-links" style="margin-top:auto;">
+        <a href="https://www.doncosolutions.com" target="_blank" rel="noopener" class="hi-donco">Live Site ↗</a>
+      </div>
+    </div>
+
+    <!-- ═══ 05 NŌRI SUSHI ═══ -->
     <div class="card bar-white">
       <span class="year">2025</span>
-      <div class="card-num">04 — Restaurant / Hospitality</div>
+      <div class="card-num">05 — Restaurant / Hospitality</div>
       <div class="card-title">N&#x14d;ri Sushi</div>
       <p class="card-desc">Restaurant site for a high-end sushi concept. Full-bleed landing, interactive menu, chef profile. Minimal — lets the food speak.</p>
       <div class="nori-preview">
@@ -510,10 +532,10 @@
       </div>
     </div>
 
-    <!-- ═══ 05 LOCKED IN ═══ -->
+    <!-- ═══ 06 LOCKED IN ═══ -->
     <div class="card bar-white">
       <span class="year">2024</span>
-      <div class="card-num">05 — Mobile App</div>
+      <div class="card-num">06 — Mobile App</div>
       <div class="card-title">Locked In</div>
       <p class="card-desc">Compete with friends to stay off your phone. Social screen-time accountability. iOS &amp; Android.</p>
       <div class="tags">
@@ -524,10 +546,10 @@
       </div>
     </div>
 
-    <!-- ═══ 06 TABBY ═══ -->
+    <!-- ═══ 07 TABBY ═══ -->
     <div class="card bar-white">
       <span class="year">2024</span>
-      <div class="card-num">06 — Chrome Extension</div>
+      <div class="card-num">07 — Chrome Extension</div>
       <div class="card-title">Tabby</div>
       <p class="card-desc">AI-powered Chrome extension that automatically groups your open tabs. Manifest V3, no clutter.</p>
       <div class="tags">
@@ -539,8 +561,6 @@
       </div>
     </div>
 
-    <!-- Empty cell — hidden on mobile -->
-    <div class="card card-empty" style="background:transparent;"></div>
 
   </div><!-- /grid -->
 

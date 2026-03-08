@@ -182,6 +182,20 @@
     /* Single-column drawer (no right panel) */
     .drawer-inner.single { grid-template-columns: 1fr; max-width: 520px; }
 
+    /* Punksierge full-width layout */
+    .drawer-inner.ps-layout {
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .ps-header { width: 100%; }
+    .ps-header .tags { margin-bottom: 8px; }
+    .ps-header .card-desc { margin: 0; }
+    .ps-body {
+      display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%;
+    }
+    .ps-body .card-links { justify-content: center; }
+    .ps-body .code-note { text-align: center; }
+    .ps-body .code-window { width: 100%; max-width: 520px; }
+
     /* ── Row logo ── */
     .item-logo { display: flex; align-items: center; flex-shrink: 0; opacity: 0.92; }
     .item-logo svg { display: block; }
@@ -254,21 +268,21 @@
         </div>
       </div>
       <div class="item-drawer">
-        <div class="drawer-inner">
-          <!-- Left -->
-          <div>
-            <p class="card-desc">CryptoPunk concierge for two real holders. Free advice, no pressure. Pure HTML/CSS/JS — no framework. Canvas pixel-fill button, randomized marquee pulling from all 10,000 punks, services accordion, three-post blog. Auto-deploys on push.</p>
+        <div class="drawer-inner ps-layout">
+          <!-- Full-width header: tags sit directly above description -->
+          <div class="ps-header">
             <div class="tags">
               <span class="tag">HTML</span><span class="tag">CSS</span>
               <span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">Vercel</span>
             </div>
+            <p class="card-desc">CryptoPunk concierge for two real holders. Free advice, no pressure. Pure HTML/CSS/JS — no framework. Canvas pixel-fill button, randomized marquee pulling from all 10,000 punks, services accordion, three-post blog. Auto-deploys on push.</p>
+          </div>
+          <!-- Centered body below -->
+          <div class="ps-body">
             <div class="card-links">
               <a href="https://punksierge.vercel.app" target="_blank" rel="noopener" style="color:var(--pink);">Live Site ↗</a>
               <a href="https://github.com/maxmurrray/Punksierge" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
-          </div>
-          <!-- Right -->
-          <div class="drawer-right">
             <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">Get In Touch</a>
             <p class="code-note">This is the code I used to make it.</p>
             <div class="code-window">

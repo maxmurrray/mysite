@@ -395,11 +395,6 @@
 
           <div class="divider"></div>
 
-          <div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Live demo — hover</div>
-            <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">Get In Touch</a>
-          </div>
-
           <div class="card-links">
             <a href="https://punksierge.vercel.app" target="_blank" rel="noopener" class="hi-pink">Live Site ↗</a>
             <a href="https://github.com/maxmurrray/Punksierge" target="_blank" rel="noopener">GitHub ↗</a>
@@ -407,47 +402,61 @@
         </div>
 
         <!-- Right -->
-        <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+
+          <!-- Live button -->
+          <div>
+            <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">Get In Touch</a>
+          </div>
+
+          <!-- Label -->
+          <p style="font-size:12px;color:var(--muted);font-style:italic;line-height:1.5;">This is the code I used to make it.</p>
+
+          <!-- Code -->
           <div class="code-window">
             <div class="code-chrome">
               <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
               <span class="code-filename">pixel-fill.js</span>
             </div>
             <div class="code-body">
-              <code><span class="cm">// Randomize fill order once on first hover</span>
+              <code><span class="cm">// Shuffle pixel grid once on first hover</span>
 <span class="kw">function</span> <span class="fn">init</span>() {
   <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">y</span> = <span class="num">0</span>; <span class="vr">y</span> < <span class="vr">h</span>; <span class="vr">y</span> += <span class="vr">PIXEL</span>)
     <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">x</span> = <span class="num">0</span>; <span class="vr">x</span> < <span class="vr">w</span>; <span class="vr">x</span> += <span class="vr">PIXEL</span>)
       <span class="vr">pixels</span>.<span class="fn">push</span>([<span class="vr">x</span>, <span class="vr">y</span>]);
-  <span class="fn">shuffle</span>(<span class="vr">pixels</span>); <span class="cm">// Fisher-Yates</span>
+  <span class="cm">// Fisher-Yates shuffle</span>
+  <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">i</span> = <span class="vr">pixels</span>.<span class="pr">length</span> <span class="op">-</span> <span class="num">1</span>; <span class="vr">i</span> > <span class="num">0</span>; <span class="vr">i</span><span class="op">--</span>) {
+    <span class="kw">const</span> <span class="vr">j</span> = <span class="fn">Math</span>.<span class="fn">floor</span>(<span class="fn">Math</span>.<span class="fn">random</span>() <span class="op">*</span> (<span class="vr">i</span> <span class="op">+</span> <span class="num">1</span>));
+    [<span class="vr">pixels</span>[<span class="vr">i</span>], <span class="vr">pixels</span>[<span class="vr">j</span>]] = [<span class="vr">pixels</span>[<span class="vr">j</span>], <span class="vr">pixels</span>[<span class="vr">i</span>]];
+  }
 }
 
-<span class="cm">// ~1/22 of pixels per frame</span>
+<span class="cm">// Fill ~1/22 of squares per frame</span>
 <span class="kw">function</span> <span class="fn">animate</span>() {
-  <span class="kw">const</span> <span class="vr">step</span> = <span class="fn">Math</span>.<span class="fn">ceil</span>(<span class="vr">pixels</span>.<span class="pr">length</span> / <span class="num">22</span>);
-  <span class="vr">filled</span> = <span class="fn">Math</span>.<span class="fn">clamp</span>(<span class="vr">filled</span> + <span class="vr">dir</span> * <span class="vr">step</span>, <span class="num">0</span>, <span class="vr">pixels</span>.<span class="pr">length</span>);
+  <span class="kw">const</span> <span class="vr">step</span> = <span class="fn">Math</span>.<span class="fn">max</span>(<span class="num">1</span>, <span class="fn">Math</span>.<span class="fn">ceil</span>(<span class="vr">pixels</span>.<span class="pr">length</span> / <span class="num">22</span>));
+  <span class="vr">filled</span> = <span class="fn">Math</span>.<span class="fn">min</span>(<span class="vr">pixels</span>.<span class="pr">length</span>,
+             <span class="fn">Math</span>.<span class="fn">max</span>(<span class="num">0</span>, <span class="vr">filled</span> <span class="op">+</span> <span class="vr">dir</span> <span class="op">*</span> <span class="vr">step</span>));
 
   <span class="vr">ctx</span>.<span class="fn">clearRect</span>(<span class="num">0</span>, <span class="num">0</span>, <span class="vr">w</span>, <span class="vr">h</span>);
   <span class="vr">ctx</span>.<span class="pr">fillStyle</span> = <span class="str">'rgba(255,255,255,.35)'</span>;
-  <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">i</span> = <span class="num">0</span>; <span class="vr">i</span> < <span class="vr">filled</span>; <span class="vr">i</span>++)
-    <span class="vr">ctx</span>.<span class="fn">fillRect</span>(...<span class="vr">pixels</span>[<span class="vr">i</span>], <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>, <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>);
+  <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">i</span> = <span class="num">0</span>; <span class="vr">i</span> < <span class="vr">filled</span>; <span class="vr">i</span><span class="op">++</span>)
+    <span class="vr">ctx</span>.<span class="fn">fillRect</span>(<span class="vr">pixels</span>[<span class="vr">i</span>][<span class="num">0</span>], <span class="vr">pixels</span>[<span class="vr">i</span>][<span class="num">1</span>], <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>, <span class="vr">PIXEL</span><span class="op">-</span><span class="num">1</span>);
 
-  <span class="kw">if</span> (<span class="vr">dir</span> > <span class="num">0</span> ? <span class="vr">filled</span> < <span class="vr">pixels</span>.<span class="pr">length</span> : <span class="vr">filled</span> > <span class="num">0</span>)
+  <span class="kw">if</span> (<span class="vr">dir</span> > <span class="num">0</span> ? <span class="vr">filled</span> < <span class="vr">pixels</span>.<span class="pr">length</span>
+              : <span class="vr">filled</span> > <span class="num">0</span>)
     <span class="fn">requestAnimationFrame</span>(<span class="fn">animate</span>);
-}</code>
+}
+
+<span class="vr">btn</span>.<span class="fn">addEventListener</span>(<span class="str">'mouseenter'</span>, () <span class="op">=></span> {
+  <span class="kw">if</span> (<span class="vr">filled</span> <span class="op">===</span> <span class="num">0</span>) <span class="fn">init</span>();
+  <span class="vr">dir</span> = <span class="num">1</span>; <span class="fn">requestAnimationFrame</span>(<span class="fn">animate</span>);
+});
+<span class="vr">btn</span>.<span class="fn">addEventListener</span>(<span class="str">'mouseleave'</span>, () <span class="op">=></span> {
+  <span class="vr">dir</span> = <span class="op">-</span><span class="num">1</span>; <span class="fn">requestAnimationFrame</span>(<span class="fn">animate</span>);
+});</code>
             </div>
           </div>
 
-          <div class="stat-grid">
-            <div class="stat-cell">
-              <div class="stat-val" style="color:var(--accent);">10k</div>
-              <div class="stat-label">Punks in marquee</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-val">0</div>
-              <div class="stat-label">Frameworks used</div>
-            </div>
-          </div>
         </div>
 
       </div>

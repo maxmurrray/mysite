@@ -65,16 +65,16 @@
 
     /* Row — the clickable header */
     .item-row {
-      display: flex; align-items: center; justify-content: space-between;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
       padding: 22px 48px;
       cursor: pointer;
       user-select: none;
       transition: background 0.15s;
-      gap: 40px;
     }
     .item-row:hover { background: rgba(255,255,255,0.02); }
 
-    .row-left { display: flex; align-items: center; gap: 20px; }
+    .row-left { display: flex; align-items: center; gap: 20px; padding-left: 12px; }
+    .row-right { display: flex; align-items: center; gap: 20px; justify-content: flex-end; padding-right: 12px; }
 
     .item-num {
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
@@ -83,7 +83,7 @@
 
     .item-name {
       font-size: clamp(18px, 2.4vw, 28px);
-      font-weight: 700; letter-spacing: -0.025em;
+      font-weight: 700; letter-spacing: -0.025em; text-align: center;
     }
 
     .item-year {
@@ -253,9 +253,9 @@
               <rect x="0" y="2" width="1" height="1"/>
             </svg>
           </span>
-          <span class="item-name" style="color:var(--pink);">Punksierge</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--pink);">Punksierge</span>
+        <div class="row-right">
           <span class="item-year">2026</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -329,9 +329,9 @@
               <path fill="#A03030" d="M29.03,17.54v17.14c1.09.01,3.94,1.5,4.93,1.5V15.91c-1.67.49-3.29,1.11-4.93,1.63Z"/>
             </svg>
           </span>
-          <span class="item-name" style="color:var(--orange);">Office Blog</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--orange);">Office Blog</span>
+        <div class="row-right">
           <span class="item-year">2025</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -373,9 +373,9 @@
               <text x="20" y="20" text-anchor="middle" dominant-baseline="central" fill="#2AABEE" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="12">1</text>
             </svg>
           </span>
-          <span class="item-name" style="color:var(--blue);">Ready Paper One</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--blue);">Ready Paper One</span>
+        <div class="row-right">
           <span class="item-year">2025</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -403,9 +403,9 @@
       <div class="item-row" onclick="toggle('item-4')">
         <div class="row-left">
           <span class="item-num">04</span>
-          <span class="item-name" style="color:var(--donco);">Donco Solutions</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--donco);">Donco Solutions</span>
+        <div class="row-right">
           <span class="item-year">2024</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -432,9 +432,9 @@
       <div class="item-row" onclick="toggle('item-5')">
         <div class="row-left">
           <span class="item-num">05</span>
-          <span class="item-name" style="color:var(--gold);">N&#x14d;ri Sushi</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--gold);">N&#x14d;ri Sushi</span>
+        <div class="row-right">
           <span class="item-year">2025</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -462,9 +462,9 @@
       <div class="item-row" onclick="toggle('item-6')">
         <div class="row-left">
           <span class="item-num">06</span>
-          <span class="item-name" style="color:var(--white);">Locked In</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--white);">Locked In</span>
+        <div class="row-right">
           <span class="item-year">2024</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -491,9 +491,9 @@
       <div class="item-row" onclick="toggle('item-7')">
         <div class="row-left">
           <span class="item-num">07</span>
-          <span class="item-name" style="color:var(--white);">Tabby</span>
         </div>
-        <div style="display:flex;align-items:center;gap:20px;">
+        <span class="item-name" style="color:var(--white);">Tabby</span>
+        <div class="row-right">
           <span class="item-year">2024</span>
           <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -65,12 +65,12 @@
 
     /* Row — the clickable header */
     .item-row {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: flex-start;
       padding: 22px 48px;
       cursor: pointer;
       user-select: none;
       transition: background 0.15s;
-      gap: 16px;
+      gap: 40px;
     }
     .item-row:hover { background: rgba(255,255,255,0.02); }
 
@@ -87,7 +87,7 @@
     }
 
     .item-year {
-      font-size: 11px; color: var(--dim); font-weight: 500; letter-spacing: 0.06em;
+      font-size: 12px; color: var(--dim); font-weight: 500; letter-spacing: 0.06em;
       flex-shrink: 0;
     }
 
@@ -369,6 +369,20 @@
       <div class="item-row" onclick="toggle('item-3')">
         <div class="row-left">
           <span class="item-num">03</span>
+          <span class="item-logo">
+            <svg viewBox="0 0 40 40" style="width:24px;height:24px;display:block;" aria-hidden="true">
+              <!-- Telegram-style blue circle -->
+              <circle cx="20" cy="20" r="20" fill="#2AABEE"/>
+              <!-- White paper sheet, portrait, slightly rounded corners -->
+              <rect x="11" y="9" width="18" height="22" rx="1.5" fill="white"/>
+              <!-- Faint ruled lines -->
+              <line x1="14" y1="15" x2="26" y2="15" stroke="#c0bab0" stroke-width="1" opacity="0.45"/>
+              <line x1="14" y1="20" x2="26" y2="20" stroke="#c0bab0" stroke-width="1" opacity="0.45"/>
+              <line x1="14" y1="25" x2="26" y2="25" stroke="#c0bab0" stroke-width="1" opacity="0.45"/>
+              <!-- "1" in Telegram blue -->
+              <text x="20" y="20" text-anchor="middle" dominant-baseline="central" fill="#2AABEE" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="12">1</text>
+            </svg>
+          </span>
           <span class="item-name" style="color:var(--blue);">Ready Paper One</span>
         </div>
         <div style="display:flex;align-items:center;gap:20px;">

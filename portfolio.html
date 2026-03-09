@@ -184,16 +184,13 @@
 
     /* Punksierge full-width layout */
     .drawer-inner.ps-layout {
-      display: flex; flex-direction: column; gap: 28px;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
     }
-    .ps-header { width: 100%; }
-    .ps-header .tags { margin-bottom: 8px; margin-top: 0; }
-    .ps-body {
-      display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%;
-    }
-    .ps-body .card-links { justify-content: center; }
-    .ps-body .code-note { text-align: center; }
-    .ps-body .code-window { width: 100%; max-width: 520px; }
+    .ps-layout .card-desc { align-self: flex-start; }
+    .ps-layout .tags { margin-top: 0; justify-content: center; }
+    .ps-layout .card-links { margin-top: 0; justify-content: center; }
+    .ps-layout .code-note { text-align: center; }
+    .ps-layout .code-window { width: 100%; max-width: 520px; }
 
     /* ── Row logo ── */
     .item-logo { display: flex; align-items: center; flex-shrink: 0; opacity: 0.92; }
@@ -268,27 +265,22 @@
       </div>
       <div class="item-drawer">
         <div class="drawer-inner ps-layout">
-          <!-- Full-width header: tags sit directly above description -->
-          <div class="ps-header">
-            <p class="card-desc">CryptoPunk concierge for two real holders. Free advice, no pressure. Pure HTML/CSS/JS — no framework. Canvas pixel-fill button, randomized marquee pulling from all 10,000 punks, services accordion, three-post blog. Auto-deploys on push.</p>
-            <div class="tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span>
-              <span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">Vercel</span>
-            </div>
+          <p class="card-desc">CryptoPunk concierge for two real holders. Free advice, no pressure.<br>Pure HTML/CSS/JS — no framework.</p>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span>
+            <span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">Vercel</span>
           </div>
-          <!-- Centered body below -->
-          <div class="ps-body">
-            <div class="card-links">
-              <a href="https://punksierge.vercel.app" target="_blank" rel="noopener" style="color:var(--pink);">Live Site ↗</a>
-              <a href="https://github.com/maxmurrray/Punksierge" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="card-links">
+            <a href="https://punksierge.vercel.app" target="_blank" rel="noopener" style="color:var(--pink);">Live Site ↗</a>
+            <a href="https://github.com/maxmurrray/Punksierge" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">Get In Touch</a>
+          <p class="code-note">This is the code I used to make it.</p>
+          <div class="code-window">
+            <div class="code-chrome">
+              <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+              <span class="code-filename">pixel-fill.js</span>
             </div>
-            <a class="pixel-btn" id="pixel-demo-btn" href="https://punksierge.vercel.app" target="_blank" rel="noopener">Get In Touch</a>
-            <p class="code-note">This is the code I used to make it.</p>
-            <div class="code-window">
-              <div class="code-chrome">
-                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                <span class="code-filename">pixel-fill.js</span>
-              </div>
               <div class="code-body"><code><span class="cm">// Shuffle pixel grid once on first hover</span>
 <span class="kw">function</span> <span class="fn">init</span>() {
   <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">y</span> = <span class="num">0</span>; <span class="vr">y</span> &lt; <span class="vr">h</span>; <span class="vr">y</span> += <span class="vr">PIXEL</span>)
@@ -315,7 +307,6 @@
   <span class="kw">if</span> (<span class="vr">dir</span> &gt; <span class="num">0</span> ? <span class="vr">filled</span> &lt; <span class="vr">pixels</span>.<span class="pr">length</span> : <span class="vr">filled</span> &gt; <span class="num">0</span>)
     <span class="fn">requestAnimationFrame</span>(<span class="fn">animate</span>);
 }</code></div>
-            </div>
           </div>
         </div>
       </div>
